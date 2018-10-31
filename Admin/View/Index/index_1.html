@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--360浏览器优先以webkit内核解析-->
+
+
+    <title>默笙科技后台管理系统 - 主页示例</title>
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/Public/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/Public/admin/css/animate.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/style.min.css" rel="stylesheet">
+    
+
+</head>
+
+<body class="gray-bg">
+    <div class="row  border-bottom white-bg dashboard-header">
+        
+        <div class="col-sm-3">
+                    <script>
+                        now = new Date(), hour = now.getHours()
+                        if (hour < 6) { document.write("<h2>再多休息一会吧,{$re.email}</h2>") }
+                        else if (hour < 9) { document.write("<h2>早上好,Guest</h2>") }
+                        else if (hour < 12) { document.write("<h2>上午好,{$re.email}</h2>") }
+                        else if (hour < 14) { document.write("<h2>中午好,工作再忙记得吃饭") }
+                        else if (hour < 18) { document.write("<h2>下午好,Guest</h2>") }
+                        else if (hour < 19) { document.write("<h2>晚上好,Guest</h2>") }
+                        else if (hour < 22) { document.write("<h2>晚安,做个好梦Guest</h2>") }
+                        else { document.write("<h2> Good night,Guest!") }
+                    </script>
+                    <small>移动设备访问请扫描以下二维码：</small>
+                    <small>移动设备访问请扫描以下二维码：</small>
+                    <br />
+                    <br />
+                    <img src="/Public/admin/img/ms.jpg" width="100%" style="max-width:100px;" />
+                    <br />
+                </div>
+         <div class="col-sm-5">
+                    <h2>&nbsp;默笙-笙笙不息</h2>
+                    <p>&nbsp;（づ￣3￣）づ╭❤～
+
+                        <p>
+                            <b> &nbsp;当前版本：</b>v1.0 普通版</p>
+
+                        <br />
+                        <p> &nbsp;
+                            <b>今天的天气</b>
+                            <div id="tp-weather-widget"></div>
+                        </p>
+                </div>
+          <div class="col-sm-4">
+                    <h4>了解一下商业版吧 <br>删除在/admin/viwe/index/index_1</h4>
+                    <ol>
+                        <volist name="bb" id="b">
+                        <li>{$b.fw}</li>
+                        
+                        </volist>
+                    </ol>
+                </div> 
+
+    </div>
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-4"></div>
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>统计信息</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <p>
+                                        <i class="glyphicon glyphicon-ok"></i>&nbsp;</i>一共
+                                        &nbsp;&nbsp;<span class="btn btn-warning m-r-sm">{$fweb}</span> 个有趣网站</a> 您可以：
+                                        <a href="{:U('tool/webadd')}">发布</a> 或者
+                                        <a href="{:U('tool/web')}">编辑</a>
+                                    </p>
+                                    <p>
+                                        <i class="glyphicon glyphicon-wrench"></i>&nbsp;</i>一共
+                                        &nbsp;&nbsp;<span class="btn btn-info m-r-sm">{$tool}</span> 个实用工具</a> 您可以：
+                                        <a href="{:U('tool/tooladd')}">发布</a> 或者
+                                        <a href="{:U('tool/tool')}">编辑</a>
+                                    </p>
+                                    <p>
+                                        <i class="glyphicon glyphicon-globe"></i>&nbsp;</i>一共
+                                        &nbsp;&nbsp;<span class="btn btn-success m-r-sm">{$webp}</span> 个网页特效</a> 您可以：
+                                        <a href="{:U('tool/webpageadd')}">发布</a> 或者
+                                        <a href="{:U('tool/webpage')}">编辑</a>
+                                    </p>
+                                    <p>
+                                        <i class="glyphicon glyphicon-qrcode"></i>&nbsp;</i>一共
+                                        &nbsp;&nbsp;<span class="btn btn-info m-r-sm">{$wx}</span> 个微信应用</a> 您可以：
+                                        <a href="{:U('tool/wxappadd')}">发布</a> 或者
+                                        <a href="{:U('tool/wxapp')}">编辑</a>
+                                    </p>
+                                    <p>
+                                        <i class="glyphicon glyphicon-transfer"></i>&nbsp;</i>一共
+                                        &nbsp;&nbsp;<span class="btn btn-primary m-r-sm">{$api}</span> 个API应用</a> 您可以：
+                                        <a href="{:U('tool/apiadd')}">发布</a> 或者
+                                        <a href="{:U('tool/api')}">编辑</a>
+                                    </p>
+                                    <p>
+                                        <i class="glyphicon glyphicon-plane"></i>&nbsp;</i>一共
+                                        &nbsp;&nbsp;<span class="btn btn-danger m-r-sm">{$game}</span> 个网页游戏</a> 您可以：
+                                        <a href="{:U('tool/gameadd')}">发布</a> 或者
+                                        <a href="{:U('tool/game')}">编辑</a>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-user-md"></i>&nbsp;您还可以
+                                        <a href="{:U('index/adminedit')}">修改您的管理员用户信息</a>
+                                    </p>
+
+                                </div>
+                            </div>
+            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>技术支持-如果您在使用过程中有任何疑问请通过以下方式联系我们</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <p>
+                                        <i class="fa fa-send-o"></i>官网：
+                                        <a href="http://www.tecms.net" target="_blank">http://www.tecms.net</a>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-qq"></i>QQ：
+                                        <a href="http://wpa.qq.com/msgrd?v=3&uin=3494490&site=qq&menu=yes" target="_blank">3494490</a>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-qq"></i>QQ群：
+                                        <a href="https://jq.qq.com/?_wv=1027&k=5Cb1I3K" target="_blank">484395502</a>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-weixin"></i>微信：
+                                        <a href="javascript:;">3494490</a>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-coffee"></i>特别鸣谢：
+                                        <a href="javascript:;">XXXX</a>
+                                    </p>
+
+                                </div>
+                            </div>
+            
+        </div>
+    </div>
+    
+    <script src="/Public/admin/js/jquery.min.js"></script>
+    <script src="/Public/admin/js/bootstrap.min.js"></script>
+    <script src="/Public/admin/js/plugins/layer/layer.min.js"></script>
+    <script src="/Public/admin/js/content.min.js"></script>
+    <script src="/Public/admin/js/welcome.min.js"></script>
+    <script>(function (T, h, i, n, k, P, a, g, e) { g = function () { P = h.createElement(i); a = h.getElementsByTagName(i)[0]; P.src = k; P.charset = "utf-8"; P.async = 1; a.parentNode.insertBefore(P, a) }; T["ThinkPageWeatherWidgetObject"] = n; T[n] || (T[n] = function () { (T[n].q = T[n].q || []).push(arguments) }); T[n].l = +new Date(); if (T.attachEvent) { T.attachEvent("onload", g) } else { T.addEventListener("load", g, false) } }(window, document, "script", "tpwidget", "//widget.seniverse.com/widget/chameleon.js"))</script>
+    <script>tpwidget("init", {
+            "flavor": "slim",
+            "location": "WX4FBXXFKE4F",
+            "geolocation": "enabled",
+            "language": "auto",
+            "unit": "c",
+            "theme": "chameleon",
+            "container": "tp-weather-widget",
+            "bubble": "enabled",
+            "alarmType": "badge",
+            "uid": "U99066903B",
+            "hash": "81eecaba0aca7ae020f24d368508640c"
+        });
+        tpwidget("show");</script>
+</body>
+
+</html>

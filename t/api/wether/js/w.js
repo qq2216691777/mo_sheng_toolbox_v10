@@ -1,0 +1,1 @@
+function xsjhitokoto(){document.write("COLL的男人是绝对不会花心的！");}

@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>天气API</title>
+		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/docs.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+		<style>
+		body{
+			margin:0;
+			padding:0;
+			text-align:center;
+			height:auto;
+			background:#2185D0;
+		}
+		.canvas{
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			position: absolute;
+			z-index: 0;
+			overflow: hidden;
+			height:auto;
+		}
+		.main{
+			width:100%;
+			height:auto;
+			position:relative;
+			margin-top:10px;
+		}
+		.bs-docs-nav{
+			background:#fff;
+		}
+		/*—滚动条默认显示样式–*/
+		::-webkit-scrollbar-thumb{
+		background-color:#018EE8;
+		height:50px;
+		outline-offset:-2px;
+		outline:2px solid #fff;
+		-webkit-border-radius:10px;
+		border: 2px solid #fff;
+		}
+		/*—鼠标点击滚动条显示样式–*/
+		::-webkit-scrollbar-thumb:hover{
+		background-color:#FB4446;
+		height:50px;
+		-webkit-border-radius:10px;
+		}
+		/*—滚动条大小–*/
+		::-webkit-scrollbar{
+		width:8px;
+		height:18px;
+		}
+		/*—滚动框背景样式–*/
+		::-webkit-scrollbar-track-piece{
+		background-color:#fff;
+		-webkit-border-radius:0;
+		}
+		.footer{
+			color:#fff;
+			margin-bottom:20px;
+			position:relative;
+		}
+		.footer a{
+			color:#fff;
+		}
+          pre{
+          	background:#F9F2F4;
+            color:#C7254E;
+          }
+		</style>
+    </head>
+    <body>
+		<header class="navbar navbar-static-top bs-docs-nav" role="banner">
+			<div class="container" >
+				<div class="navbar-header" >
+					<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="index.html" class="navbar-brand">天气API</a>
+				</div>
+				<nav id="bs-navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li >
+							<a href="index.html" >首页</a>
+						</li>
+						<li>
+							<a href="http://www.tecms.net">官网</a>
+						</li>
+						<li>
+							<a href="https://www.iamy.vip/">小Y资源网</a>
+						</li>
+					</ul>
+					
+				</nav>
+			</div>
+		</header>
+		<div id="particles-js" class="canvas"></div>
+		<div class="container">
+			<div class="panel panel-default main">
+				<div class="panel-heading">
+					<h3 class="panel-title text-left">调用方法</h3>
+				</div>
+				<div class="panel-body text-left">
+					<p>数据获取</p>
+					<ul class="list-group">
+						<li class="list-group-item">请求地址:<pre>http://tools.tecms.net/index.php/index/wether</pre></li>
+						<li class="list-group-item">请求方式:GET</li>
+						<li class="list-group-item">请求编码:接口:charset 参数:UTF8/GBK(必须大写，默认UTF8)</li>
+						<li class="list-group-item">请求参数:接口:code 参数:js(为空则返回纯文本)</li>
+					</ul>
+					<p>JavaScript + HTML</p>
+					<ul class="list-group">
+						<li class="list-group-item">脚本地址:<pre>https://api.uixsj.cn/hitokoto/w.php?code=js</pre></li>
+						<li class="list-group-item">本接口目测可在任意JavaScript + HTML使用，已启用HTTPS，速度也还行。</li>
+					</ul>
+					<p>使用方法</p>
+					<p>将下面这段代码放入页面内需要展示一句话的位置即可</p>
+					<ul class="list-group">
+						<li class="list-group-item"><pre>&lt;script type="text/javascript" src="https://api.uixsj.cn/hitokoto/w.php?code=js"&gt;&lt;/script&gt;&lt;div id="xsjhitokoto"&gt;&lt;script&gt;xsjhitokoto()&lt;/script&gt;&lt;/div&gt;</pre></li>
+					</ul>
+					<p>中英文版 使用方法同上</p>
+					<ul class="list-group">
+						<li class="list-group-item"><pre>&lt;script type="text/javascript" src="https://api.uixsj.cn/hitokoto/en.php?code=js"&gt;&lt;/script&gt;&lt;div id="enhitokoto"&gt;&lt;script&gt;enhitokoto()&lt;/script&gt;&lt;/div&gt;</pre></li>
+					</ul>
+                  	<a href="source.php" style="margin-left:1em;">查看哪些站点使用了本API</a>
+				</div>
+			</div>
+			<div class="panel panel-default main">
+				<div class="panel-heading">
+					<h3 class="panel-title text-left">效果预览</h3>
+				</div>
+				<div class="panel-body">
+					<p>中文</p>
+					<div class="alert alert-info">
+						<script type="text/javascript" src="js/w.js"></script><div id="xsjhitokoto"><script>xsjhitokoto()</script></div>
+					</div>
+					<p>中英文</p>
+					<div class="alert alert-success">
+						<script type="text/javascript" src="js/en.js"></script><div id="enhitokoto"><script>enhitokoto()</script></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<p>Copyright &copy; <a href="https://uixsj.cn">现实君</a> 2017 </p>
+		</div>
+	    <script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/docs.min.js"></script>  <!-- 导航 -->
+		<script src="js/particles.min.js"></script><!-- 动态背景 -->
+		<script src="js/xsjbox.js"></script>  <!-- 动态背景 -->
+
+	</body>
+</html>

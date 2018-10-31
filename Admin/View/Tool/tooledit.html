@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>默笙科技后台管理系统 - 写文章</title>
+    <meta name="keywords" content="默笙科技后台管理系统,强大的功能程序,默笙科技" />
+    <meta name="description" content="默笙科技后台管理系统" />
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/Public/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/Public/admin/css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="/Public/admin/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+    <link href="/Public/admin/css/plugins/chosen/chosen.css" rel="stylesheet">
+    <link href="/Public/admin/css/animate.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/style.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <link href="/Public/admin/css/plugins/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+   
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content mailbox-content">
+                        <div class="file-manager">
+                            <a class="btn btn-block btn-primary compose-mail" href="{:U('tool/tooladd')}">发布新的实用工具</a>
+                            <div class="space-25"></div>
+                            
+                            <h3>修改说明：</h3>
+                            <div class="row">
+                                
+                                    <div class="radio">
+                                        
+                                        
+                                        <label for="radio1">
+                                            <span style="color: red">如需更改源码请直接在文件夹内找到源文件进行更改</span>
+                                        </label>
+                                        <br><br>
+                                         <label for="radio1">
+                                            <span style="color: red">
+                                            目前此版本不支持在线直接修改，后续会开放- -</span>
+                                        </label>
+                                        <br><br>
+                                         <label for="radio1">
+                                            <span style="color: red">
+                                            排序的数字越大，工具就越靠前，切记不可重复</span>
+                                        </label>
+                                        <br><br>
+                                         <label for="radio1">
+                                            <span style="color: red">
+                                            工具储存路径：/t/tool/你的工具</span>
+                                        </label>
+                                        <br><br>
+                                         <label for="radio1">
+                                            <span style="color: red">
+                                            站外工具下个版本开发，请悉知</span>
+                                        </label>
+                                    </div>
+                                    
+                            </div>
+                           
+
+                            <!-- <h5 class="tag-title">标签</h5>
+                            <ul class="tag-list" style="padding: 0">
+                                <li><a href="mail_compose.html"><i class="fa fa-tag"></i> 朋友</a>
+                                </li>
+                                
+                            </ul> -->
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9 animated fadeInRight">
+                <div class="mail-box-header">
+                    <div class="pull-right tooltip-demo">
+                        <a href="mailbox.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="存为草稿"><i class="fa fa-pencil"></i> 存为草稿</a>
+                        <a href="index.html" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="放弃"><i class="fa fa-times"></i> 放弃</a>
+                    </div>
+                    <h2>
+                    编辑文章
+                </h2>
+                </div>
+                <div class="mail-box">
+
+
+                    <div class="mail-body">
+
+                        <form class="form-horizontal" method="get">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">LOGO：</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" id="logo" class="form-control" value="{$res.logo}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">标题：</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" id="title" class="form-control" value="{$res.title}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">排序：</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" id="yd" class="form-control" value="{$res.yd}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">URL：</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" id="url" class="form-control" value="{$res.url}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">作者：</label>
+
+                                <div class="col-sm-10">
+                                    <input type="text" id="author" class="form-control" value="{$res.author}">
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
+                                <label class="col-sm-2 control-label">封面图上传</label>
+                                <div class="col-sm-10"><input type="file" class="form-control"></div>
+                               
+                            </div> -->
+                        </form>
+
+                    </div>
+
+                   <!--  <div class="mail-text h-200">
+
+                        <div class="summernote" >
+                           <h2>源码云平台愿景</h2>
+                    <div class="con">
+                    <h2>关于我们</h2><div><span style="background-color: rgb(0, 255, 0);">we are team&nbsp;</span></div>
+
+                                
+
+
+                    </div>
+                    <h3 class="bot">下一秒，让你看到我们到底有多强</h3>
+
+                        </div>
+                        <div class="clearfix"></div>
+                    </div> -->
+                    <div class="mail-body text-right tooltip-demo">
+                        <button id="fb" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Send"><i class="fa fa-reply"></i> 发布</button>
+                        <a href="{:U('tool/tool')}" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Discard email"><i class="fa fa-times"></i> 放弃</a>
+                        
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    <script src="/Public/admin/js/jquery.min.js"></script>
+    <script src="/Public/admin/js/bootstrap.min.js"></script>
+    <script src="/Public/admin/js/content.min.js"></script>
+    <script src="/Public/admin/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="/Public/admin/js/layer/layer.js"></script>
+    <script src="/Public/admin/js/plugins/prettyfile/bootstrap-prettyfile.js"></script>
+    <script src="/Public/admin/js/plugins/summernote/summernote.min.js"></script>
+    <script src="/Public/admin/js/plugins/summernote/summernote-zh-CN.js"></script>
+    
+ 
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",});$(".summernote").summernote({lang:"zh-CN"})});var edit=function(){$(".click2edit").summernote({focus:true})};var save=function(){var aHTML=$(".click2edit").code();$(".click2edit").destroy()};
+    </script>
+    <script>
+        $( 'input[type="file"]' ).prettyFile();
+    </script>
+    <script type="text/javascript">
+      $("#fb").click(function(){
+      var e=0;
+      var id="<?php echo $res['id']?>";
+      var logo=$("#logo").val();
+      var title=$("#title").val();
+      var url=$("#url").val();
+      var author=$("#author").val();
+      var yd=$("#yd").val();
+
+      if(e==0){
+        $.post("{:U('tool/ajaxtooledit')}",{id:id,logo:logo,title:title,url:url,author:author,yd:yd},function(data){
+          if(data.status=='1'){
+            layer.alert(data.info);
+            window.location.href=data.url;
+          }else{
+            layer.alert(data.info);
+          }
+        })
+      }
+      
+    })
+    </script>
+</body>
+
+</html>

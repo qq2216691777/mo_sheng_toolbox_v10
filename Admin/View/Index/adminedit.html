@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>默笙科技后台管理系统 - 首页</title>
+    <meta name="keywords" content="默笙科技后台管理系统,强大的功能程序,默笙科技" />
+    <meta name="description" content="默笙科技后台管理系统" />
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/Public/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/Public/admin/css/animate.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/style.min.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+    
+         <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>基本信息
+                                    <small>修改您网站的管理员的基本信息</small>
+                                </h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <form method="get" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">邮箱</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="text" id="email" value="{$re.email}" class="form-control" placeholder="该用户名作为您登录该系统时的账户">
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">原密码：</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="password" id="yps" class="form-control" name="password">
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">新密码</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="password" id="xps" class="form-control" name="password">
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">确认密码</label>
+
+                                        <div class="col-sm-10">
+                                            <input type="password" id="xxps" placeholder="确认您上方输入的新密码" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+
+
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-2">
+                                            <button class="btn btn-primary" id="xg" type="button">保存内容</button>
+                                            <button class="btn btn-white" type="submit">取消</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    <script src="/Public/admin/js/jquery.min.js"></script>
+    <script src="/Public/admin/js/md5.js"></script>
+    <script type="text/javascript" src="/Public/admin/js/layer/layer.js"></script> 
+    <script src="/Public/admin/js/bootstrap.min.js"></script>
+    <script src="/Public/admin/js/content.min.js"></script>
+    <script src="/Public/admin/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function(){$(".i-checks").iCheck({checkboxClass:"icheckbox_square-green",radioClass:"iradio_square-green",})});
+    </script>
+    <script type="text/javascript">
+      $("#xg").click(function(){
+      var e=0;
+      var ps="<?php echo $re['password']?>";
+      var yps=$("#yps").val();
+      var ypss=$.md5(yps);
+      var xps=$("#xps").val();
+      var xxps=$("#xxps").val();
+      var email=$("#email").val();
+      var re = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+      if (email == "") {
+            layer.msg('请输入用户名', function () {
+                //关闭后的操作
+                return false;
+            });
+            return false;
+        }
+      if (!re.test(email)) {
+            layer.msg('请输入正确的用户名', function () {
+                //关闭后的操作
+                return false;
+            });
+            return false;
+        }
+      if (ps!= ypss) {
+        layer.alert('原密码不正确');
+        return false;
+      }
+      if (xps!= xxps) {
+        layer.alert('两次密码不一样');
+        return false;
+      }
+      
+      if(e==0){
+        $.post("{:U('index/adminup')}",{xps:xps,email:email},function(data){
+          if(data.status=='1'){
+            layer.alert(data.info);
+            window.location.href=data.url;
+          }else{
+            layer.alert(data.info);
+          }
+        })
+      }
+      
+    })
+    </script>
+</body>
+
+</html>

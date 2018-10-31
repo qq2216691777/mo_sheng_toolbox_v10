@@ -1,0 +1,134 @@
+
+			.clear{
+				clear: both;
+			}
+			body{
+				background: #f0f0f0;
+				margin-bottom:5px;
+				
+			}
+			h3{
+				margin-top:10px;
+				
+				width:96%;
+				height:35px;
+				line-height:35px;
+				text-align:left;
+				background:white;
+				border-bottom:1px solid #eee;
+				margin-left:auto;
+				margin-right:auto;
+			}
+			.slogan{
+				
+				width: 96%;
+			}
+			.tips{
+				width:96%;
+				color:red;
+				font-size:0.5em;
+				background:yellow;
+				margin:0;
+				
+				height:20px;
+				line-height:20px;
+			}
+			
+			.daikuan-a{
+				
+				text-decoration: none;
+				width: 96%;
+				background: white;
+				color:#bbb;
+			}
+			.daikuan{
+				margin: 0px auto;
+				width: 96%;
+				height: 100px;
+				background: white;
+				border-bottom:1px solid #eee;
+				overflow:hidden;
+				
+			}
+			
+			.daikuan img{
+				width: 70px;
+				height: 70px;
+				border-radius: 5px;
+				display: inline-block;
+				margin:15px 10px;
+				
+			}
+			.daikuan-logo{
+				float: left;
+			}
+			.daikuan-content{
+				float:left;
+				margin-top:10px;
+				
+				
+			}
+				.daikuan-name{
+				width: 96%;
+				font-size: 1em;
+				font-weight: 700;
+				color: #111;
+				
+			}
+			.daikuan-content p{
+				
+				font-size:0.8em;
+				margin-top:5px;
+				margin-left:0px;
+				
+				
+				
+			}
+			
+		
+			.daikuan-name span{
+				color: red;
+			}
+			
+			
+			.daikuan-details span{
+				color:coral;
+				margin-right: 10px;
+				
+			}
+			.daikuan-tag{
+				
+				float:right;
+				font-size:0.8em;
+				color:white;
+			}
+			.daikuan-tag span{
+				margin-right:5px;
+				padding:3px 5px;
+				display:block;
+				float:right;
+				font-size:0.8em;
+			}
+		
+			#tag1{
+				background:#4cb7fa;
+				
+			}
+			#tag2{
+				background:#ff9e50;
+				
+			}
+			
+			.daikuan-btn{
+				width:70px;
+				background:#f34f4f;
+				height:25px;
+				line-height:25px;
+				color:white;
+				border-radius:2px;
+				text-align:center;
+				float:right;
+				margin-right:10px;
+				margin-top:30px;
+			}
+			}

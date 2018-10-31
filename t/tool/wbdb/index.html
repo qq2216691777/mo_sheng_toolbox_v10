@@ -1,0 +1,212 @@
+﻿<!--公共头文件开始（本头文件由代码动态生成）-->
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>在线文本对比</title>
+    <meta name="description" content="本工具能快速比对两端代码或者是文本之间的差异，并直观地展现在您面前"/>
+    <meta name="keywords" content="在线文本对比,在线工具箱,工具箱,网页工具箱"/>
+    
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery.min.js"></script>
+    
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <!-- 页面通用自定义css文件 -->
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.min.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+    
+    <!--返回顶部插件-->
+    <script type="text/javascript" src="js/scrolltopcontrol.js"></script>
+    
+    <!--滚动加载插件-->
+    <script type="text/javascript" src="js/jquery.lazyload.min.js"></script>
+    
+    <!--pajax无刷新加载插件-->
+    <!--<script type="text/javascript" src="js/jquery.pjax.js"></script>-->
+    
+    <script type="text/javascript">
+    $(function() {
+    	$(".lazy").lazyload({
+    		effect:"show",     // effect(特效),值有show(直接显示),fadeIn(淡入),slideDown(下拉)等,常用fadeIn
+    		failurelimit:4,    //加载N张可加区域外的图片
+    		//load:resetPage,     //加载完的回调函数
+    		threshold :100, //距离屏幕180px即开始加载
+    		//placeholder : "img/grey.gif", //用图片提前占位
+	    });
+    });
+    </script>
+    
+    <!--
+    
+    我不是针对谁，我只是想说，一切【不留本站友链】或【不在本站留言板留言告知】就 Copy 本站代码的行为都是耍流氓！
+    
+    另: Copy 代码时请顺手把本站的站长统计的代码删了行不……要不然数据都统计到本站来了(手动滑稽)
+    
+                                    孟坤软件
+                                    2017-1-5
+    
+    -->
+    
+    <!--公共头文件结束-->
+
+    <link rel="stylesheet" href="css/diffview.css">
+    
+    <link rel="stylesheet" href="css/my.css">
+
+    <script src="js/diffview.js"></script>
+    
+    <script src="js/difflib.js"></script>
+    
+    <script src="js/function.js"></script>
+
+<!--公共banner部分开始（本banner由代码动态生成）-->
+</head> 
+
+<body>
+
+<!--动态背景-->
+<div id="particles"></div>
+
+<div class="container nav-main">
+
+<h1 class="web-title">默笙工具箱 <small>网页版</small></h1>
+
+<nav class="navbar navbar-default">
+<div class="container-fluid">
+	<div class="navbar-header" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+			<span class="sr-only">默笙工具箱-网页版</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand">默笙工具箱-网页版</a>
+	</div>
+	<div id="navbar" class="navbar-collapse collapse">	  
+		<ul class="nav navbar-nav">
+			<li><a href="http://www.tecms.net/">首页</a></li>
+			<li><a href="http://tools.tecms.net/" target="_blank">默笙工具箱<span style="color: red;">(Hot)</span></a></li>
+			
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="http://tools.tecms.net/">工具箱</a></li>
+		</ul>
+	</div><!--/.nav-collapse -->
+</div><!--/.container-fluid（100%宽度） -->
+</nav>
+
+</div><!--<div class="container">-->
+
+<div class="container">
+<!--公共banner部分结束-->
+<div class="panel panel-default">
+<div class="panel-heading">在线文本差异对比</div>
+<div class="panel-body">
+    
+
+    
+    <input type="hidden" id="contextSize" value="">
+    
+    <div class="row">
+        <div class="col-md-6">
+            <p>Base Text（基础文本）</p>
+            <textarea id="baseText" class="form-control" rows="10"></textarea>
+        </div>
+        
+        <div class="col-md-6">
+            <p>New Text（对比文本）</p>
+            <textarea id="newText" class="form-control" rows="10"></textarea>
+        </div>
+    </div> <!--class="row"-->
+
+    <div class="toolbar text-right">
+        对比方式：
+        <label class="radio-inline">
+            <input type="radio" name="viewType" id="beside" value=0> 左右并排
+        </label>
+        
+        <label class="radio-inline">
+            <input type="radio" name="viewType" id="inline" value=1 checked> 上下对比  
+        </label>
+        &nbsp;
+        <button type="button" class="btn btn-primary btn-check" onclick="javascript:diffUsingJS();">对比</button>
+    </div>
+    
+    <div id="diffoutput" class="table-responsive">
+    </div>
+
+</div>
+</div>  <!--class="panel panel-default"-->
+
+<div class="panel panel-default">
+    <div class="panel-heading">工具简介</div>
+    <div class="panel-body">
+       本工具能快速比对两端代码或者是文本之间的差异，并直观地展现在您面前
+    </div>
+</div>  <!--class="panel panel-default"-->
+
+<!--公共foot部分开始（本footer由代码动态生成）-->
+
+<footer class="main-footer">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="widget">
+                <h4 class="title">友情链接</h4>
+                <div class="content friend-links">
+                    <a href="https://www.iamy.vip/" title="小Y资源网" target="_blank">小Y资源网</a></br>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="widget">
+                <h4 class="title">我们用到的技术</h4>
+                <div class="content tag-cloud">
+                    <a href="http://www.bootcss.com/" title="Bootstrap中文网" target="_blank">Bootstrap</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="widget">
+                <h4 class="title">赞助商</h4>
+                <div class="content friend-links">
+                    <a href="http://www.mengkun.icoc.cc" title="孟坤软件" target="_blank">孟坤</a><br>
+                </div>
+            </div>
+        </div>
+    </div> <!--class="row"-->
+    
+    <div class="text-center copyright">
+        <span>Copyright &copy; <a href="https://www.iamy.vip">小Y资源网</a></span> |
+        <span><img src="picture/deb325fec1ac49a69df6ead5bd48ee2e.gif"><a href="http://www.miibeian.gov.cn/" target="_blank">豫ICP备XXXXXXXXXXXX</a></span><span class="hidden-xs"> </span><br class="visible-xs-inline">
+    </div>
+    
+</footer>
+
+<!--
+<div style="width:300px;margin:0 auto; padding:20px 0;">
+    <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=43070202000609" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="picture/a41a542cfe5a4fbabc197978760f26cb.gif" style="float:left;"/><p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">湘公网安备 43070202000609号</p></a>
+</div>
+-->
+
+</div><!--class="container"中部容器-->
+
+<!--孟坤工具箱网页版通用js文件-->
+<script type="text/javascript" src="js/jquery.mktoolbox.js"></script>
+
+</body> 
+</html> 
+<!--公共foot部分结束-->

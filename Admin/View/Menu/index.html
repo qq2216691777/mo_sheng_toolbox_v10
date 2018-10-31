@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>默笙科技后台管理系统 - 文章分类管理</title>
+    <meta name="keywords" content="默笙科技后台管理系统,强大的功能程序,默笙科技" />
+    <meta name="description" content="默笙科技后台管理系统" />
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/Public/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/Public/admin/css/animate.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/style.min.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content  animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h3>菜单列表</h3>
+                        <p class="small"><i class="fa fa-hand-o-up"></i> 在列表之间可以任意拖动</p>
+
+                        <div class="input-group">
+                            <input type="text" id="menu" placeholder="添加新的菜单名称" class="input input-sm form-control">
+
+                            <br><br>
+                            <input type="text" id="menulink" placeholder="菜单链接 写全哦！" class="input input-sm form-control">
+                            <br><br>
+                            <input type="text" id="menudescc" placeholder="菜单描述" class="input input-sm form-control">
+
+                            
+                            
+                            <span class="input-group-btn">
+                                        <button type="button" id="tjmenu" class="btn btn-sm btn-white"> <i class="fa fa-plus"></i> 添加</button>
+                                </span>
+                        </div>
+
+                        <ul class="sortable-list connectList agile-list">
+                            <volist name="menu" id="me">
+                            <li class="success-element">
+                                {$me.menu}
+                                <div class="agile-detail">
+                                    <a onClick="menu_del(this,'{$me.id}')" href="javascript:;" class="pull-right btn btn-xs btn-primary">删除</a>
+                                    <i class="glyphicon glyphicon-tags"></i> {$me.link}
+                                    <i class="glyphicon glyphicon-pencil"></i> {$me.descc}
+                                </div>
+                            </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h3>友情链接</h3>
+                        <p class="small"><i class="fa fa-hand-o-up"></i> 在列表之间可以任意拖动</p>
+
+                        <div class="input-group">
+                            <input type="text" id="linktitle" placeholder="添加新的友情链接" class="input input-sm form-control">
+                            <br><br>
+                            <input type="text" id="linkurl" placeholder="友情链接地址 写全哦！" class="input input-sm form-control">
+                            <br><br>
+                            <input type="text" id="linkdescc" placeholder="友情链接描述" class="input input-sm form-control">
+                            <span class="input-group-btn">
+                                        <button type="button" id="tjlink" class="btn btn-sm btn-white"> <i class="fa fa-plus"></i> 添加</button>
+                                </span>
+                        </div>
+
+                        <ul class="sortable-list connectList agile-list">
+                            <volist name="link" id="lk">
+                            <li class="success-element">
+                                <i class="fa fa-tag"></i>{$lk.title}</a>
+                                <div class="agile-detail">
+                                    <a onClick="link_del(this,'{$lk.id}')" href="javascript:;" class="pull-right btn btn-xs btn-primary">删除</a>
+
+                                    <i class="fa fa-clock-o"></i> {$lk.link}
+                                    <i class="fa fa-clock-o"></i> {$lk.descc}
+                                </div>
+                            </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h3>一言列表</h3>
+                        <p class="small"><i class="fa fa-hand-o-up"></i> 在列表之间可以任意拖动</p>
+
+                        <div class="input-group">
+                            <input type="text" id="yy" placeholder="添加新的一言" class="input input-sm form-control">
+
+                           
+
+                            
+                            
+                            <span class="input-group-btn">
+                                        <button type="button" id="tjyy" class="btn btn-sm btn-white"> <i class="fa fa-plus"></i> 添加</button>
+                                </span>
+                        </div>
+
+                        <ul class="sortable-list connectList agile-list">
+                            <volist name="yiyan" id="yy">
+                            <li class="success-element">
+                                {$yy.value}
+                                <div class="agile-detail">
+                                    <a onClick="yy_del(this,'{$yy.id}')" href="javascript:;" class="pull-right btn btn-xs btn-primary">删除</a>
+                                    
+                                   
+                                </div>
+                            </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+
+
+    </div>
+    <script src="/Public/admin/js/jquery.min.js"></script>
+    <script src="/Public/admin/js/layer/layer.js"></script>
+    <script src="/Public/admin/js/bootstrap.min.js"></script>
+    <script src="/Public/admin/admin/js/jquery-ui-1.10.4.min.js"></script>
+    <script src="/Public/admin/js/content.min.js"></script>
+    <script>
+        $(document).ready(function(){$(".sortable-list").sortable({connectWith:".connectList"}).disableSelection()});
+    </script>
+    <script type="text/javascript">
+      $("#tjmenu").click(function(){
+      var e=0;
+      var menu=$("#menu").val();
+      var menulink=$("#menulink").val();
+      var menudescc=$("#menudescc").val();
+     
+      if(e==0){
+        $.post("{:U('menu/menuadd')}",{menu:menu,menulink:menulink,menudescc:menudescc},function(data){
+          if(data.status=='1'){
+            layer.alert(data.info);
+            window.location.href=data.url;
+          }else{
+            layer.alert(data.info);
+          }
+        })
+      }
+      
+    })
+    </script>
+    <script type="text/javascript">
+      $("#tjlink").click(function(){
+      var e=0;
+      var link=$("#linktitle").val();
+      var linkurl=$("#linkurl").val();
+      var linkdescc=$("#linkdescc").val();
+     
+      if(e==0){
+        $.post("{:U('menu/linkadd')}",{link:link,linkurl:linkurl,linkdescc:linkdescc},function(data){
+          if(data.status=='1'){
+            layer.alert(data.info);
+            window.location.href=data.url;
+          }else{
+            layer.alert(data.info);
+          }
+        })
+      }
+      
+    })
+    </script>
+    <script type="text/javascript">
+        
+ function menu_del(obj,id){
+        var id = id;
+
+        layer.confirm('确认要删除吗？',function(index){
+
+        $.ajax({
+            type: 'POST',
+            url: '{:U('menu/menudel')}',
+            dataType: 'html',
+            data:{id:id},
+            success: function(data){
+                
+                layer.msg('已删除!',{icon:1,time:1000});
+                window.location.reload();
+            },
+            error:function(data) {
+                console.log(data.msg);
+            },
+        });     
+    });
+}
+    </script>
+    <script type="text/javascript">
+        
+ function link_del(obj,id){
+        var id = id;
+
+        layer.confirm('确认要删除吗？',function(index){
+
+        $.ajax({
+            type: 'POST',
+            url: '{:U('menu/linkdel')}',
+            dataType: 'html',
+            data:{id:id},
+            success: function(data){
+                
+                layer.msg('已删除!',{icon:1,time:1000});
+                window.location.reload();
+            },
+            error:function(data) {
+                console.log(data.msg);
+            },
+        });     
+    });
+}
+    </script>
+        <script type="text/javascript">
+        
+ function yy_del(obj,id){
+        var id = id;
+
+        layer.confirm('确认要删除吗？',function(index){
+
+        $.ajax({
+            type: 'POST',
+            url: '{:U('menu/yydel')}',
+            dataType: 'html',
+            data:{id:id},
+            success: function(data){
+                
+                layer.msg('已删除!',{icon:1,time:1000});
+                window.location.reload();
+            },
+            error:function(data) {
+                console.log(data.msg);
+            },
+        });     
+    });
+}
+    </script>
+    <script type="text/javascript">
+      $("#tjyy").click(function(){
+      var e=0;
+      var yy=$("#yy").val();
+     
+      if(e==0){
+        $.post("{:U('menu/yyadd')}",{yy:yy},function(data){
+          if(data.status=='1'){
+            layer.alert(data.info);
+            window.location.href=data.url;
+          }else{
+            layer.alert(data.info);
+          }
+        })
+      }
+      
+    })
+    </script>
+</body>
+
+</html>

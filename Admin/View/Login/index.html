@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>默笙科技后台管理系统 - 登录</title>
+    <meta name="keywords" content="默笙科技后台管理系统,强大的功能程序,默笙科技" />
+    <meta name="description" content="默笙科技后台管理系统" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/Public/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/animate.min.css" rel="stylesheet">
+    <link href="/Public/admin/css/style.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html" />
+    <![endif]-->
+    <script>if (window.top !== window.self) { window.top.location = window.location; }</script>
+</head>
+
+<body class="gray-bg">
+
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+
+                <h3 class="logo-name">M+</h3>
+                
+            </div>
+            <h3>欢迎使用 </h3>
+            <h3>默笙-笙笙不息</h3>
+            <form class="m-t" role="form" action="index.html">
+                <div class="form-group">
+                    <input type="email" id="username" class="form-control" placeholder="用户名" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" class="form-control" placeholder="密码" required="">
+                </div>
+                <button type="button" id="denglu" class="btn btn-primary block full-width m-b">登 录</button>
+            </form>
+        </div>
+    </div>
+    <script src="/Public/admin/js/jquery.min.js"></script>
+    <script src="/Public/admin/js/bootstrap.min.js"></script>
+    <script src="/Public/admin/js/layer/layer.js"></script>
+</body>
+<script type="text/javascript">
+    $("#denglu").click(function () {
+        var e = 0;
+        var name = $("#username").val();
+        var pwd = $("#password").val();
+        var re = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+        if (name == "") {
+            layer.msg('请输入用户名', function () {
+                //关闭后的操作
+                return false;
+            });
+            return false;
+        }
+        if (!re.test(name)) {
+            layer.msg('请输入正确的用户名', function () {
+                //关闭后的操作
+                return false;
+            });
+            return false;
+        }
+        if (pwd == "") {
+            layer.msg('请输入密码', function () {
+                //关闭后的操作
+                return false;
+            });
+            return false;
+        }
+        if (pwd.length < 6) {
+            layer.msg('密码长度不正确   ', function () {
+                //关闭后的操作
+                return false;
+            });
+            return false;
+        }
+        if (e == 0) {
+            $.post("{:U('login/ajaxLogin')}", { name: name, pass: pwd }, function (data) {
+                if (data.status == '1') {
+                    layer.alert(data.info, { icon: 6 });//layer.msg('不开心。。', {icon: 5});
+                    window.location.href = data.url;
+                } else {
+                    layer.alert(data.info, { icon: 5 });
+                }
+            })
+        }
+
+    })
+</script>
+
+</html>

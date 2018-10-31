@@ -1,0 +1,390 @@
+﻿<!-- 普通版请保留部分版权，感谢您对作者的尊重，一经发现可能会上黑名单的哦 -->
+<!doctype html>
+<html>
+
+<head>
+	<title>{$sys.title} - {$sys.ftitle}</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+	/>
+	<meta name="description" content="{$sys.descc}" />
+	<meta name="keywords" content="{$sys.keyword}" />
+	<meta name="theme-color" content="#279de4">
+	<link rel="shortcut icon" href="base/favicon.ico" />
+	<link href="/Public/Home/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/Public/Home/css/docs.min.css" rel="stylesheet">
+	<link href="/Public/Home/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="/Public/Home/css/animate.min.css" rel="stylesheet">
+	<link href="/Public/Home/css/index.css" rel="stylesheet" />
+	<script src="/Public/Home/js/jquery.js"></script>
+	<script src="/Public/Home/js/bootstrap.min.js"></script>
+	<script src="/Public/Home/js/tool.js"></script>
+</head>
+
+<body onload="init()">
+	<header class="navbar navbar-static-top bs-docs-nav" role="banner">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar"
+				 aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="{$sys.url}" class="navbar-brand" data-toggle="tooltip" data-placement="bottom" title="最全工具箱">{$sys.logo}</a>
+			</div>
+			<nav id="bs-navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<volist name="menu" id="mn">
+					<li>
+						<a href="{$mn.link}" target="_blank" data-toggle="tooltip" data-placement="bottom" title="{$mn.descc}">{$mn.menu}</a>
+					</li>
+					</volist>
+					<li>
+						<div class="searchbutton">
+							<input type="text" id="getsearch" placeholder="搜索..." />
+							<button onclick="search()" data-toggle="modal" data-target="#searchmodal" data-toggle="tooltip"></button>
+						</div>
+					</li>
+				</ul>
+			</nav>
+			<div class="preloader">
+				<div class="preloader-box">
+					<div>{$sys.t1}</div>
+					<div>{$sys.t2}</div>
+					<div>{$sys.t3}</div>
+					<div>{$sys.t4}</div>
+					<div>{$sys.t5}</div>
+					<div>{$sys.t6}</div>
+					
+				</div>
+			</div>
+			<p class="stitle">{$sys.ftitle}</p>
+			<p class="notice">
+				<marquee direction="right" behavior="scroll" scrollamount="6" scrolldelay="0" loop="-1" hspace="10" vspace="10"></marquee>
+			</p>
+		</div>
+	</header>
+	<div class="nav-list">
+		<ul id="myTab" class="nav nav-tabs nav-justified">
+			<li class="active">
+				<a href="#fun" data-toggle="tab" id="toFun">
+					有趣网站
+				</a>
+			</li>
+			<li>
+				<a href="#useful" data-toggle="tab" id="toUseful">
+					实用工具
+				</a>
+			</li>
+			<li>
+				<a href="#effect" data-toggle="tab" id="toEffect">
+					网页特效
+				</a>
+			</li>
+			<li>
+				<a href="#wx" data-toggle="tab" id="toWx">
+					微信应用
+				</a>
+			</li>
+			<li>
+				<a href="#api" data-toggle="tab" id="toApi">
+					API应用
+				</a>
+			</li>
+			<li>
+				<a href="#game" data-toggle="tab" id="toGame">
+					网页游戏
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="container">
+		<div id="myTabContent" class="tab-content">
+			<div class="tab-pane fade in active" id="fun">
+				<volist name="web" id="wb">
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>{$wb.url}" target="_blank">
+					<li class="item">
+						<div class="i-head">
+							<span class="open open<?php echo rand(1,6);?>">{$wb.logo}</span>
+							<p>{$wb.title}{$web.url}</p>
+						</div>
+						<div class="i-body">
+							<p class="hot">
+								<i class="fa fa-user" aria-hidden="true"></i>{$wb.author}</p>
+							<p class="goto">
+								<i class="fa fa-sign-in" aria-hidden="true"></i>Go</p>
+						</div>
+					</li>
+				</a>
+				</volist>
+			</div>
+			<div class="tab-pane fade" id="useful">
+				<volist name="tool" id="tl">
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>{$tl.url}" target="_blank">
+					<li class="item">
+						<div class="i-head">
+							<span class="open open<?php echo rand(1,6);?>">{$tl.logo}</span>
+							<p>{$tl.title}</p>
+						</div>
+						<div class="i-body">
+							<p class="hot">
+								<i class="fa fa-user" aria-hidden="true"></i>{$tl.author}</p>
+							<p class="goto">
+								<i class="fa fa-sign-in" aria-hidden="true"></i>Go</p>
+						</div>
+					</li>
+				</a>
+				</volist>
+			</div>
+			<div class="tab-pane fade" id="effect">
+				<volist name="wep" id="wp">
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>{$wp.url}" target="_blank">
+					<li class="item">
+						<div class="i-head">
+							<span class="open open<?php echo rand(1,6);?>">{$wp.logo}</span>
+							<p>{$wp.title}</p>
+						</div>
+						<div class="i-body">
+							<p class="hot">
+								<i class="fa fa-user" aria-hidden="true"></i>{$wp.author}</p>
+							<p class="goto">
+								<i class="fa fa-sign-in" aria-hidden="true"></i>Go</p>
+						</div>
+					</li>
+				</a>
+				</volist>
+			</div>
+
+			<div class="tab-pane fade" id="wx">
+				<volist name="wxapp" id="wxa">
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>{$wxa.url}" target="_blank">
+					<li class="item">
+						<div class="i-head">
+							<span class="open open<?php echo rand(1,6);?>">{$wxa.logo}</span>
+							<p>{$wxa.title}</p>
+						</div>
+						<div class="i-body">
+							<p class="hot">
+								<i class="fa fa-user" aria-hidden="true"></i>{$wxa.author}</p>
+							<p class="goto">
+								<i class="fa fa-sign-in" aria-hidden="true"></i>Go</p>
+						</div>
+					</li>
+				</a>
+				</volist>
+			</div>
+			<div class="tab-pane fade" id="api">
+				<volist name="api" id="ai">
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>{$ai.url}" target="_blank">
+					<li class="item">
+						<div class="i-head">
+							<span class="open open<?php echo rand(1,6);?>">{$ai.logo}</span>
+							<p>{$ai.title}</p>
+						</div>
+						<div class="i-body">
+							<p class="hot">
+								<i class="fa fa-user" aria-hidden="true"></i>{$ai.author}</p>
+							<p class="goto">
+								<i class="fa fa-sign-in" aria-hidden="true"></i>Go</p>
+						</div>
+					</li>
+				</a>
+				</volist>
+			</div>
+			<div class="tab-pane fade" id="game">
+				<volist name="game" id="ga">
+				<a href="http://<?php echo $_SERVER['SERVER_NAME'];?>{$ga.url}" target="_blank">
+					<li class="item">
+						<div class="i-head">
+							<span class="open open<?php echo rand(1,6);?>">{$ga.logo}</span>
+							<p>{$ga.title}</p>
+						</div>
+						<div class="i-body">
+							<p class="hot">
+								<i class="fa fa-user" aria-hidden="true"></i>{$ga.author}</p>
+							<p class="goto">
+								<i class="fa fa-sign-in" aria-hidden="true"></i>Go</p>
+						</div>
+					</li>
+				</a>
+				</volist>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			<div class="nowtime">
+				<h4>
+					<i class="fa fa-clock-o" aria-hidden="true"></i>&nbsp;当前时间</h4>
+				<div id="time"></div>
+			</div>
+			<div class="weather">
+				<p>您的IP地址:<?php $ip = $_SERVER["REMOTE_ADDR"];
+echo $ip;?>
+					<p>来自<?php $ip = $_SERVER["REMOTE_ADDR"]; $url='http://ip.taobao.com/service/getIpInfo.php?ip='.$ip;
+    $result = file_get_contents($url);
+    $result = json_decode($result,true);
+    if($result['code']!==0 || !is_array($result['data'])) return false;
+    echo $result['data']['city'];?>
+    <?php $city=$result['data']['city'];
+							$curl = curl_init();
+							$url="http://wthrcdn.etouch.cn/WeatherApi?city=郑州";
+						    //设置抓取的url
+						    curl_setopt($curl, CURLOPT_URL, $url);
+
+						    //设置头文件的信息作为数据流输出
+						    //curl_setopt($curl, CURLOPT_HEADER, 1);
+						    //设置获取的信息以文件流的形式返回，而不是直接输出。
+						    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+						    curl_setopt($curl, CURLOPT_ENCODING, "");
+						    //执行命令
+						    $data = curl_exec($curl);
+						    //关闭URL请求
+						    curl_close($curl);
+						    //显示获得的数据
+						    //dump($data) ;
+						    libxml_disable_entity_loader(true);
+					        $values = json_decode(json_encode(simplexml_load_string($data, 'SimpleXMLElement', LIBXML_NOCDATA)), true);        
+					        
+						?>
+						<p>今天白天:<?php  echo $values['fengxiang'];?>,<?php  echo $values['fengli'];?>,空气湿度:<?php  echo $values['shidu'];?></p>
+							 体感温度: <?php  echo $values['wendu'];?>℃
+							<br>主要污染物:<?php  echo $values['environment']['MajorPollutants'];?>
+							<br> 空气质量: <?php  echo $values['environment']['quality'];?>
+							<br>温馨提醒:  <?php  echo $values['environment']['suggest'];?></p>
+						<p>更新于:<?php echo  date("Y/m/d");?>&nbsp;&nbsp;<?php echo $values['updatetime'];?></p>
+						<p>享受生活每一天</p> 
+						
+
+			</div>
+			<div class="oneword">
+				<h4>
+					<i class="fa fa-commenting-o" aria-hidden="true"></i>&nbsp;一言</h4>
+				<script type="text/javascript" >
+					function xsjhitokoto(){document.write("{$yy.value}");}
+
+				</script>
+				<div id="xsjhitokoto">
+					<script>xsjhitokoto()</script>
+				</div>
+			</div>
+		</div>
+		<div class="contact">
+			<a id="weixin" data-toggle="popover" data-placement="top" data-original-title="" title="">
+					<i class="fa fa-qq" aria-hidden="true"></i>
+				</a>
+			
+			<a href="http://weibo.com/weizhuangxingfu">
+				<i class="fa fa-weibo" aria-hidden="true"></i>
+			</a>
+		</div>
+		<div class="copyright">
+			<span>Copyright © 2018 By:默笙<a href="http://www.miitbeian.gov.cn" title="备案" target="_blank">{$sys.beian}</a></span>
+			
+			<volist name="link" id="lk">
+			<a href="{$lk.link}" data-toggle="tooltip" data-placement="top" title="{$lk.descc}">{$lk.title}</a>
+			</volist>
+		</div>
+	</footer>
+	<div class="modal fade" id="aboutmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
+	<div class="modal fade" id="searchmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+					<h4 class="modal-title" id="myModalLabel">
+						搜索结果
+					</h4>
+				</div>
+				<div class="modal-body" id="searchresult">
+					<!-- <li class="item" style="width:50%;"><div class="i-head"><span class="open open1">百</span><p>让我帮你百度</p></div><div class="i-body"><p class="hot"><i class="fa fa-eye" aria-hidden="true"></i>5087</p><p class="goto"><i class="fa fa-sign-in" aria-hidden="true"></i>Go</p></div></li> -->
+				</div>
+				<img src="/Public/Home/img/loading.gif" class="loading" style="position: absolute;top: 50%;left: 50%;margin-left: -16px">
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="side">
+		<ul>
+			<li>
+				<a href="#fun" data-toggle="tab" id="goFun">
+					<i class="fa fa-paper-plane-o" aria-hidden="true">
+						<p>有趣</p>
+					</i>
+				</a>
+			</li>
+			<li>
+				<a href="#useful" data-toggle="tab" id="goUseful">
+					<i class="fa fa-cubes" aria-hidden="true">
+						<p>实用</p>
+					</i>
+				</a>
+			</li>
+			<li>
+				<a href="#effect" data-toggle="tab" id="goEffect">
+					<i class="fa fa-fire" aria-hidden="true">
+						<p>特效</p>
+					</i>
+				</a>
+			</li>
+			<li>
+				<a href="#wx" data-toggle="tab" id="goWx">
+					<i class="fa fa-weixin" aria-hidden="true">
+						<p>微信</p>
+					</i>
+				</a>
+			</li>
+			<li>
+				<a href="#api" data-toggle="tab" id="goApi">
+					<i class="fa fa-font" aria-hidden="true">
+						<p>API</p>
+					</i>
+				</a>
+			</li>
+			<li>
+				<a href="#game" data-toggle="tab" id="goGame">
+					<i class="fa fa-gamepad" aria-hidden="true">
+						<p>游戏</p>
+					</i>
+				</a>
+			</li>
+			<li>
+				<a href="#" id="goTop">
+					<i class="fa fa-chevron-up" aria-hidden="true"></i>
+				</a>
+			</li>
+		</ul>
+	</div>
+	
+	<script src="/public/Home/js/docs.min.js"></script>
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?6717ce8c86df0b2590ad440a2ff1707c";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+
+		// var seach_val = $('#getsearch').val();
+		// $.ajax({
+		//     url:"{:U('index/serch')}?key=",//请求的url地址
+		//     dataType:"json",//返回的格式为json
+		//     async:true,//请求是否异步，默认true异步，这是ajax的特性
+		//     data:{"id":"value"},//参数值
+		//     type:"GET",//请求的方式
+		//     success:function(data){
+
+		//     },//请求成功的处理
+		// });
+	</script>
+</body>
+<!-- power By Mosheng www.tecms.net 请保留此处版权 -->
+</html>
